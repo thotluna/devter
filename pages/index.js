@@ -1,5 +1,8 @@
 import Head from 'next/head'
 import AppLayout from '../components/AppLayout'
+import Button from '../components/Buttom'
+import GitHub from '../components/Icons/GitHub'
+import { colors } from '../styles/theme'
 
 export default function Home() {
 
@@ -12,21 +15,41 @@ export default function Home() {
       </Head>
 
       <AppLayout>
-        <h1>
-          <a href="https://nextjs.org">devter</a>
-        </h1>
-
+        <section>
+          <img src='devter-logo.png' alt='Logo' />
+          <h1>Devter</h1>
+          <h2>Talk about debelopment with developers</h2>
+          <Button>
+            <GitHub fill={colors.white} width={24} height={24} /> 
+            Login with GitHub
+          </Button>
+        </section>
       </AppLayout>
 
       <style jsx>{`
-        h1 {
-          text-align: center;
-          font-size: 48px;
+        section{
+          display: grid;
+          place-items: center;
+          place-content: center;
+          height: 100%;
         }
-
-        a {
-          color: orange;
-          text-decoration: none;
+        img{
+          width: 7.5em;
+          height: auto;
+        }
+        h1{
+          padding:.1em;
+          margin:.2em auto .1em;
+          font-size: 36px;
+          color: ${colors.primary};
+          font-weight: 800;
+        }
+        h2{
+          font-size: 1.3rem;
+          text-align: center;
+          padding:.2em 2em;
+          margin:.1em .1em .5em;
+          color: ${colors.secondary};
         }
       `}</style>
     </>
