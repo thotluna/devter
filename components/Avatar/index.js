@@ -1,5 +1,5 @@
-import React from 'react'
-import styles from './styles'
+import React from "react"
+import styles from "./styles"
 
 export default function Avatar({ src, username }) {
   return (
@@ -9,7 +9,6 @@ export default function Avatar({ src, username }) {
         <h2>{username}</h2>
       </div>
       <style jsx>{styles}</style>
-
     </>
   )
 }
