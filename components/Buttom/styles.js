@@ -13,6 +13,7 @@ button{
   transition: opacity .3 ease;
   display: flex;
   align-items: center;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, .3)
 }
 
 button > :global(svg){
@@ -21,5 +22,10 @@ button > :global(svg){
 
 button:hover{
   opacity: .9;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, .5)
+}
+
+button:active{
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, .2)
 }
 `

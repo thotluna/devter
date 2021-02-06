@@ -3,13 +3,9 @@ import styles from "./styles";
 
 export default function Button({ children, onClick }) {
 
-  const handleLogin = () => {
-    
-  }
-
   return (
     <>
-      <button onClick={handleLogin}>
+      <button onClick={onClick}>
         {children}
       </button>
       <style jsx>{styles}</style>
