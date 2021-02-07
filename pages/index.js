@@ -1,13 +1,14 @@
 import Head from "next/head"
 import { useEffect, useState } from "react"
-import AppLayout from "../components/AppLayout"
-import Button from "../components/Buttom"
-import GitHub from "../components/Icons/GitHub"
-import { colors } from "../styles/theme"
+import AppLayout from "components/AppLayout"
+import Button from "components/Buttom"
+import GitHub from "components/Icons/GitHub"
+import { colors } from "styles/theme"
 
 import { loginWithGitHub, onAuthStateChanged } from "../firebase/client"
 
 import Avatar from "../components/Avatar"
+import Logo from "components/Icons/Logo"
 
 export default function Home() {
   const [user, setUser] = useState(null)
@@ -36,7 +37,7 @@ export default function Home() {
 
       <AppLayout>
         <section>
-          <img src="devter-logo.png" alt="Logo" />
+          <Logo fill={colors.secondary} width={120} />
           <h1>Devter</h1>
           <h2>Talk about debelopment with developers</h2>
           {user === null && (
