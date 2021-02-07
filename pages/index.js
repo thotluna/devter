@@ -4,11 +4,11 @@ import { useEffect, useState } from "react"
 import AppLayout from "components/AppLayout"
 import Button from "components/Buttom"
 import GitHub from "components/Icons/GitHub"
+import Spinner from "components/Spinner"
 import { colors } from "styles/theme"
 
 import { loginWithGitHub, onAuthStateChanged } from "../firebase/client"
 
-import Avatar from "../components/Avatar"
 import Logo from "components/Icons/Logo"
 
 export default function Home() {
@@ -52,9 +52,9 @@ export default function Home() {
               Login with GitHub
             </Button>
           )}
-          {user && user.username && (
+          {user === undefined && (
             <div>
-              <Avatar src={user.avatar} username={user.username} />
+              <Spinner />
             </div>
           )}
         </section>
