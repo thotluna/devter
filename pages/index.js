@@ -65,7 +65,7 @@ export default function Home() {
           display: grid;
           place-items: center;
           place-content: center;
-          height: 100%;
+          height: 100vh;
         }
         img {
           width: 7.5em;
