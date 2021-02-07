@@ -19,21 +19,21 @@ export default css`
   div {
     display: grid;
     place-items: center;
-    height: 100vh;
+    min-height: 100vh;
   }
 
   main {
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
     position: relative;
   }
 
   @media (min-width: ${breackpoint.movil}) {
     main {
-      height: 90vh;
+      min-height: 100vh;
       max-width: ${breackpoint.movil};
     }
   }
