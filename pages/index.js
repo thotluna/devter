@@ -1,4 +1,5 @@
 import Head from "next/head"
+import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import AppLayout from "components/AppLayout"
 import Button from "components/Buttom"
@@ -12,6 +13,7 @@ import Logo from "components/Icons/Logo"
 
 export default function Home() {
   const [user, setUser] = useState(null)
+  const router = useRouter()
 
   const handleLogin = () => {
     setUser(undefined)
@@ -27,6 +29,10 @@ export default function Home() {
     console.log("user:", user)
     onAuthStateChanged(setUser)
   }, [])
+
+  useEffect(() => {
+    user && router.replace("/home")
+  }, [user])
 
   return (
     <>
