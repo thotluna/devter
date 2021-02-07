@@ -11,21 +11,22 @@ import { loginWithGitHub, onAuthStateChanged } from "../firebase/client"
 
 import Logo from "components/Icons/Logo"
 
+const STATUS_USER = {
+  NOT_USER: null,
+  DONT_NKOW: undefined,
+}
+
 export default function Home() {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(STATUS_USER.NOT_USER)
   const router = useRouter()
 
   const handleLogin = () => {
-    setUser(undefined)
-    loginWithGitHub()
-      .then((user) => {
-        setUser(user)
-      })
-      .catch((err) => console.log(err))
+    setUser(STATUS_USER.DONT_NKOW)
+    loginWithGitHub().catch((err) => console.log(err))
   }
 
   useEffect(() => {
-    setUser(undefined)
+    setUser(STATUS_USER.DONT_NKOW)
     console.log("user:", user)
     onAuthStateChanged(setUser)
   }, [])
@@ -46,13 +47,13 @@ export default function Home() {
           <Logo fill={colors.secondary} width={120} />
           <h1>Devter</h1>
           <h2>Talk about debelopment with developers</h2>
-          {user === null && (
+          {user === STATUS_USER.NOT_USER && (
             <Button onClick={handleLogin}>
               <GitHub fill={colors.white} width={24} height={24} />
               Login with GitHub
             </Button>
           )}
-          {user === undefined && (
+          {user === STATUS_USER.DONT_NKOW && (
             <div>
               <Spinner />
             </div>
@@ -65,7 +66,6 @@ export default function Home() {
           display: grid;
           place-items: center;
           place-content: center;
-          height: 100vh;
         }
         img {
           width: 7.5em;

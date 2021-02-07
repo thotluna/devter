@@ -5,6 +5,7 @@ export default css`
   div {
     position: sticky;
     top: 0;
+    width: 100%;
     background-color: ${colors.white};
     padding: 0.5rem 1rem;
     display: flex;
