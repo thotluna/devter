@@ -13,6 +13,11 @@ export const globalStyles = css.global`
     background-size: 50px 50px;
     font-family: ${fonts.base};
   }
+
+  input,
+  textarea {
+    font-family: ${fonts.base};
+  }
 `
 
 export default css`

@@ -14,10 +14,17 @@ export default css`
     display: flex;
     align-items: center;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+    user-select: none;
   }
 
   button > :global(svg) {
     margin-right: 0.5em;
+  }
+
+  button[disabled] {
+    pointer-events: none;
+    opacity: 0.2;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
   }
 
   button:hover {

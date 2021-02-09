@@ -13,12 +13,15 @@ const firebaseConfig = {
 
 !firebase.apps.length && firebase.initializeApp(firebaseConfig)
 
+const db = firebase.firestore()
+
 const mapUserFromFirebaseAuth = (user) => {
   if (!user) return null
-  const { displayName, photoURL } = user
+  const { displayName, photoURL, uid } = user
   return {
     username: displayName,
     avatar: photoURL,
+    id: uid,
   }
 }
 
@@ -32,4 +35,57 @@ export const onAuthStateChanged = (onChange) => {
 export const loginWithGitHub = () => {
   const githubProvider = new firebase.auth.GithubAuthProvider()
   return firebase.auth().signInWithPopup(githubProvider)
+}
+
+export const addDevit = (id, username, avatar, message) => {
+  return db.collection("devits").add({
+    id,
+    username,
+    avatar,
+    message,
+    createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
+    likesCount: 0,
+    sharedCount: 0,
+  })
+}
+
+// export const fetchAllFirestore = () => {
+//   return db
+//     .collection("devits")
+//     .get()
+//     .then(snapshot => {
+//       snapshot.docs.map((doc) => {
+//         const id = doc.id
+//         const data = doc.data()
+//         return {
+//           id,
+//           ...data,
+//         }
+//       })
+//     })
+// }
+
+export const fetchLatestDevits = () => {
+  return db
+    .collection("devits")
+    .get()
+    .then(({ docs }) => {
+      return docs.map((doc) => {
+        const data = doc.data()
+        const id = doc.id
+        const { createdAt } = data
+        console.log(createdAt)
+
+        const date = new Date(createdAt.seconds * 1000)
+        const normalizedCreatedAt = new Intl.DateTimeFormat("es-ES").format(
+          date
+        )
+
+        return {
+          ...data,
+          id,
+          createdAt: normalizedCreatedAt,
+        }
+      })
+    })
 }
