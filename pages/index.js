@@ -1,34 +1,23 @@
 import Head from "next/head"
 import { useRouter } from "next/router"
-import { useEffect, useState } from "react"
+import { useEffect, useCallback } from "react"
 import AppLayout from "components/AppLayout"
 import Button from "components/Buttom"
 import GitHub from "components/Icons/GitHub"
 import Spinner from "components/Spinner"
 import { colors } from "styles/theme"
 
-import { loginWithGitHub, onAuthStateChanged } from "../firebase/client"
+import { loginWithGitHub } from "../firebase/client"
 
 import Logo from "components/Icons/Logo"
-
-const STATUS_USER = {
-  NOT_USER: null,
-  DONT_NKOW: undefined,
-}
+import useUser, { STATUS_USER } from "hooks/useUser"
 
 export default function Home() {
-  const [user, setUser] = useState(STATUS_USER.NOT_USER)
+  const user = useUser()
   const router = useRouter()
 
-  const handleLogin = () => {
-    setUser(STATUS_USER.DONT_NKOW)
+  const handleLogin = useCallback(() => {
     loginWithGitHub().catch((err) => console.log(err))
-  }
-
-  useEffect(() => {
-    setUser(STATUS_USER.DONT_NKOW)
-    console.log("user:", user)
-    onAuthStateChanged(setUser)
   }, [])
 
   useEffect(() => {
@@ -47,7 +36,7 @@ export default function Home() {
           <Logo fill={colors.secondary} width={120} />
           <h1>Devter</h1>
           <h2>Talk about debelopment with developers</h2>
-          {user === STATUS_USER.NOT_USER && (
+          {user === STATUS_USER.NOT_LOGGED && (
             <Button onClick={handleLogin}>
               <GitHub fill={colors.white} width={24} height={24} />
               Login with GitHub
@@ -63,6 +52,8 @@ export default function Home() {
 
       <style jsx>{`
         section {
+          width: 100%;
+          height: 90vh;
           display: grid;
           place-items: center;
           place-content: center;

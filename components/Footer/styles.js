@@ -3,10 +3,10 @@ import { colors } from "styles/theme"
 
 export default css`
   div {
-    position: sticky;
+    position: fixed;
     bottom: 0;
     background-color: ${colors.white};
-    width: 100%;
+    width: 375px;
     height: 49px;
     padding: 0.5rem 1rem;
     display: flex;

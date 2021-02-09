@@ -1,23 +1,24 @@
-import { useState, useEffect } from "react"
-
+import { useState, useEffect, memo } from "react"
 import AppLayout from "components/AppLayout"
 import Footer from "components/Footer"
 import Header from "components/Header"
 import Devit from "components/Devit"
+import useUser from "hooks/useUser"
 
-export default function PageHome() {
+function PageHome() {
+  const user = useUser()
   const [timeline, setTimeline] = useState([])
-
   useEffect(() => {
-    fetch("http://localhost:3000/api/statuses/home_timeline")
-      .then((res) => res.json())
-      .then(setTimeline)
-  }, [])
+    user &&
+      fetch("http://localhost:3000/api/statuses/home_timeline")
+        .then((res) => res.json())
+        .then(setTimeline)
+  }, [user])
 
   return (
     <>
       <AppLayout>
-        <Header />
+        <Header src={user && user.avatar} />
         <section>
           {timeline.map((devit) => {
             return (
@@ -36,7 +37,7 @@ export default function PageHome() {
       </AppLayout>
       <style jsx>{`
         section {
-          padding: 0.5em 1em;
+          padding: 0.5em 1em 4em;
         }
         Header {
         }
@@ -44,3 +45,5 @@ export default function PageHome() {
     </>
   )
 }
+
+export default memo(PageHome)

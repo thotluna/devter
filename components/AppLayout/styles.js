@@ -28,8 +28,8 @@ export default css`
     border-radius: 10px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     min-height: 100vh;
-    display: grid;
-    place-items: center;
+    ${"" /* display: grid;
+    place-items: center; */}
     width: 100%;
     position: relative;
     overflow-y: auto;
