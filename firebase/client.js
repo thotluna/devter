@@ -49,22 +49,6 @@ export const addDevit = (id, username, avatar, message) => {
   })
 }
 
-// export const fetchAllFirestore = () => {
-//   return db
-//     .collection("devits")
-//     .get()
-//     .then(snapshot => {
-//       snapshot.docs.map((doc) => {
-//         const id = doc.id
-//         const data = doc.data()
-//         return {
-//           id,
-//           ...data,
-//         }
-//       })
-//     })
-// }
-
 export const fetchLatestDevits = () => {
   return db
     .collection("devits")
@@ -74,17 +58,11 @@ export const fetchLatestDevits = () => {
         const data = doc.data()
         const id = doc.id
         const { createdAt } = data
-        console.log(createdAt)
-
-        const date = new Date(createdAt.seconds * 1000)
-        const normalizedCreatedAt = new Intl.DateTimeFormat("es-ES").format(
-          date
-        )
 
         return {
           ...data,
           id,
-          createdAt: normalizedCreatedAt,
+          createdAt: +createdAt.toDate(),
         }
       })
     })

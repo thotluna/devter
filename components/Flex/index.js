@@ -10,6 +10,7 @@ export default function Flex({
 
       <style jsx>{`
         div {
+          width: 100%;
           display: flex;
           flex-direction: ${direction || "row"};
           align-items: ${alingItem || "strech"};

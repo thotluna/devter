@@ -10,10 +10,7 @@ function PageHome() {
   const user = useUser()
   const [timeline, setTimeline] = useState([])
   useEffect(() => {
-    user &&
-      // fetch("http://localhost:3000/api/statuses/home_timeline")
-      //   .then((res) => res.json())
-      fetchLatestDevits().then(setTimeline)
+    user && fetchLatestDevits().then(setTimeline)
   }, [user])
 
   return (
@@ -22,7 +19,6 @@ function PageHome() {
         <Header src={user && user.avatar} />
         <section>
           {timeline.map((devit) => {
-            console.log(devit)
             return (
               <Devit
                 key={devit.id}

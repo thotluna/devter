@@ -1,9 +1,13 @@
+import useTimeAgo from "hooks/useTimeAgo"
+
 export default function HeadingDevit({ title, date }) {
+  const timeago = useTimeAgo(date)
+
   return (
     <>
       <div>
         <h2>{title}</h2>
-        <h4>{date}</h4>
+        <h4>{timeago}</h4>
       </div>
       <style jsx>{`
         div {
