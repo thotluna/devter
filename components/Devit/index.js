@@ -11,6 +11,7 @@ export default function Devit({
   username,
   name,
   message,
+  img,
   createdAt,
   likesCount,
   sharedCount,
@@ -24,6 +25,7 @@ export default function Devit({
             <div>
               <HeadingDevit title={name || username} date={createdAt} />
               <p>{message}</p>
+              {img && <img src={img} />}
             </div>
           </Flex>
         </Flex>

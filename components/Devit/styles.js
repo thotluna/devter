@@ -24,4 +24,14 @@ export default css`
     padding: 0;
     margin-bottom: 1rem;
   }
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  article > :global(div) {
+    margin-top: 1rem;
+  }
 `

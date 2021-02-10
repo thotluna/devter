@@ -5,6 +5,7 @@ import Header from "components/Header"
 import Devit from "components/Devit"
 import useUser from "hooks/useUser"
 import { fetchLatestDevits } from "firebase/client"
+import Head from "next/head"
 
 function PageHome() {
   const user = useUser()
@@ -16,6 +17,9 @@ function PageHome() {
   return (
     <>
       <AppLayout>
+        <Head>
+          <title>Inicio | Devter</title>
+        </Head>
         <Header src={user && user.avatar} />
         <section>
           {timeline.map((devit) => {
@@ -27,6 +31,7 @@ function PageHome() {
                 username={devit.username}
                 name={devit.name}
                 message={devit.message}
+                img={devit.img}
                 createdAt={devit.createdAt}
                 likesCount={devit.likesCount}
                 sharedCount={devit.sharedCount}
