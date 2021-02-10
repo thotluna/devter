@@ -2,6 +2,7 @@ import Avatar from "components/Avatar"
 import Flex from "components/Flex"
 import FooterDevit from "components/FooterDevit"
 import HeadingDevit from "components/HeadingDevit"
+import ImageComponent from "components/ImageComponent"
 
 import styles from "./styles"
 
@@ -25,7 +26,7 @@ export default function Devit({
             <div>
               <HeadingDevit title={name || username} date={createdAt} />
               <p>{message}</p>
-              {img && <img src={img} />}
+              {img && <ImageComponent src={img} />}
             </div>
           </Flex>
         </Flex>
