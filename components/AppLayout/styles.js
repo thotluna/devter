@@ -18,6 +18,10 @@ export const globalStyles = css.global`
   textarea {
     font-family: ${fonts.base};
   }
+
+  * {
+    box-sizing: border-box;
+  }
 `
 
 export default css`
@@ -38,6 +42,7 @@ export default css`
     width: 100%;
     position: relative;
     overflow-y: auto;
+    padding: 0 1rem;
   }
 
   @media (min-width: ${breackpoint.movil}) {

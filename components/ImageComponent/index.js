@@ -1,8 +1,8 @@
-export default function ImageComponent({ src, onClick }) {
+export default function ImageComponent({ src, onClick = null }) {
   return (
     <>
       <picture>
-        {onclick && <button onClick={onClick}>X</button>}
+        {onClick && <button onClick={onClick}>X</button>}
         <img src={src} />
       </picture>
       <style jsx>{`
@@ -25,7 +25,7 @@ export default function ImageComponent({ src, onClick }) {
           color: white;
         }
         img {
-          width: 100%;
+          width: 80%;
           height: auto;
           border-radius: 10px;
         }

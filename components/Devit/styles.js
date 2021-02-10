@@ -4,6 +4,12 @@ export default css`
   article {
     padding: 10px;
     border-bottom: 1px solid #d2d2d2;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  article:hover {
+    background-color: #fbfbfb;
   }
 
   div {

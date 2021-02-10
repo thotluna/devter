@@ -40,7 +40,9 @@ function PageHome() {
       <Footer />
       <style jsx>{`
         section {
-          padding: 0.5em 1em 4em;
+           {
+            /* padding: 0.5em 1em 4em; */
+          }
         }
         Header {
         }
