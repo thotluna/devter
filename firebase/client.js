@@ -52,6 +52,7 @@ export const addDevit = (id, username, avatar, message) => {
 export const fetchLatestDevits = () => {
   return db
     .collection("devits")
+    .orderBy("createdAt", "desc")
     .get()
     .then(({ docs }) => {
       return docs.map((doc) => {
