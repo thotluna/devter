@@ -1,5 +1,3 @@
-import AppLayout from "components/AppLayout"
-
 import Seo from "components/Seo"
 import Avatar from "components/Avatar"
 import FormSendDevit from "components/FormSendDevit"
@@ -11,13 +9,11 @@ export default function Composetweet() {
 
   return (
     <>
-      <AppLayout>
-        <Seo title="Create Devit | Devter" />
-        <div>
-          {user && <Avatar src={user.avatar} width={48} height={48} />}
-          <FormSendDevit />
-        </div>
-      </AppLayout>
+      <Seo title="Create Devit | Devter" />
+      <div>
+        {user && <Avatar src={user.avatar} width={48} height={48} />}
+        <FormSendDevit />
+      </div>
       <style jsx>{`
         div {
           display: flex;

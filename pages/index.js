@@ -1,7 +1,6 @@
 import Head from "next/head"
 import { useRouter } from "next/router"
 import { useEffect, useCallback } from "react"
-import AppLayout from "components/AppLayout"
 import Button from "components/Buttom"
 import GitHub from "components/Icons/GitHub"
 import Spinner from "components/Spinner"
@@ -30,26 +29,22 @@ export default function Home() {
         <title>devter 🐦</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <AppLayout>
-        <section>
-          <Logo fill={colors.secondary} width={120} />
-          <h1>Devter</h1>
-          <h2>Talk about debelopment with developers</h2>
-          {user === STATUS_USER.NOT_LOGGED && (
-            <Button onClick={handleLogin}>
-              <GitHub fill={colors.white} width={24} height={24} />
-              Login with GitHub
-            </Button>
-          )}
-          {user === STATUS_USER.DONT_NKOW && (
-            <div>
-              <Spinner />
-            </div>
-          )}
-        </section>
-      </AppLayout>
-
+      <section>
+        <Logo fill={colors.secondary} width={120} />
+        <h1>Devter</h1>
+        <h2>Talk about debelopment with developers</h2>
+        {user === STATUS_USER.NOT_LOGGED && (
+          <Button onClick={handleLogin}>
+            <GitHub fill={colors.white} width={24} height={24} />
+            Login with GitHub
+          </Button>
+        )}
+        {user === STATUS_USER.DONT_NKOW && (
+          <div>
+            <Spinner />
+          </div>
+        )}
+      </section>
       <style jsx>{`
         section {
           width: 100%;

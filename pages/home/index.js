@@ -1,5 +1,4 @@
 import { useState, useEffect, memo } from "react"
-import AppLayout from "components/AppLayout"
 import Footer from "components/Footer"
 import Header from "components/Header"
 import Devit from "components/Devit"
@@ -16,31 +15,29 @@ function PageHome() {
 
   return (
     <>
-      <AppLayout>
-        <Head>
-          <title>Inicio | Devter</title>
-        </Head>
-        <Header src={user && user.avatar} />
-        <section>
-          {timeline.map((devit) => {
-            return (
-              <Devit
-                key={devit.id}
-                id={devit.id}
-                avatar={devit.avatar}
-                username={devit.username}
-                name={devit.name}
-                message={devit.message}
-                img={devit.img}
-                createdAt={devit.createdAt}
-                likesCount={devit.likesCount}
-                sharedCount={devit.sharedCount}
-              />
-            )
-          })}
-        </section>
-        <Footer />
-      </AppLayout>
+      <Head>
+        <title>Inicio | Devter</title>
+      </Head>
+      <Header src={user && user.avatar} />
+      <section>
+        {timeline.map((devit) => {
+          return (
+            <Devit
+              key={devit.id}
+              id={devit.id}
+              avatar={devit.avatar}
+              username={devit.username}
+              name={devit.name}
+              message={devit.message}
+              img={devit.img}
+              createdAt={devit.createdAt}
+              likesCount={devit.likesCount}
+              sharedCount={devit.sharedCount}
+            />
+          )
+        })}
+      </section>
+      <Footer />
       <style jsx>{`
         section {
           padding: 0.5em 1em 4em;
